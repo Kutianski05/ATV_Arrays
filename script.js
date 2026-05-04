@@ -42,6 +42,7 @@ botaoPrimeiro.addEventListener("click", function(){
 const botaoAdiciona = document.getElementById("adiciona")
 
 botaoAdiciona.addEventListener("click", function(){
-    lista_nomes.unshift()
+    const texto = input.value;
+    lista_nomes.unshift(texto)
     renderizar()
 })
