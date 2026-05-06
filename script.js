@@ -1,15 +1,19 @@
 
 let lista_nomes = ["João", "Dionatan", "uLton"]
+let lista_maiusculo = lista_nomes.map(nome => nome.toUpperCase())
+let lista_filtrada = lista_nomes.filter(nome => nome.length >= 5)
 
 function renderizar(){
     const lista_pagina = document.getElementById("lista")
   
     lista_pagina.innerHTML = ""
-    for(let item of lista_nomes){
-        let elemento = document.createElement('li')
-        elemento.innerText = item
-        lista_pagina.appendChild(elemento)
-    }
+    lista_nomes.forEach(nome => {
+        let li = document.createElement("li")
+        li.innerText = nome
+        lista_pagina.appendChild(li)
+    })
+
+    contaNome()
 }
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -46,3 +50,38 @@ botaoAdiciona.addEventListener("click", function(){
     lista_nomes.unshift(texto)
     renderizar()
 })
+
+function contaNome(){
+    const contagem = document.getElementById("contagem")
+    let contador = 0;
+
+    for(let nome of lista_nomes){
+        if(nome.length >= 5){
+            contador++
+        }
+    }
+    contagem.innerText = contador;
+}
+
+document.getElementById("maiusculo").addEventListener("click", () =>{
+   
+    renderizar2(lista_maiusculo)
+})
+
+document.getElementById("filtrar").addEventListener("click", () =>{
+
+    renderizar2(lista_filtrada)
+})
+
+function renderizar2(lista_qualquer){
+    const lista_nova = document.getElementById("lista_2")
+
+    lista_nova.innerHTML = ""
+
+    lista_qualquer.forEach(nome => {
+       let li = document.createElement("li")
+        li.innerText = nome
+        lista_nova.appendChild(li)
+    })
+
+}
